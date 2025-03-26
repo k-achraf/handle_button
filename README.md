@@ -1,39 +1,58 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# handle_button
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+[![pub package](https://img.shields.io/pub/v/rounded_loading_button_plus.svg)](https://pub.dev/packages/rounded_loading_button_plus)
+![build](https://github.com/chrisedg87/flutter_rounded_loading_button/workflows/build/badge.svg)
+[![codecov](https://codecov.io/gh/chrisedg87/flutter_rounded_loading_button/branch/master/graph/badge.svg?token=3HQDMRP8N2)](https://codecov.io/gh/chrisedg87/flutter_rounded_loading_button)
+[![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://pub.dev/packages/effective_dart)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Awesome Flutter](https://img.shields.io/badge/Awesome-Flutter-blue.svg)](https://github.com/Solido/awesome-flutter)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+HandleButton is a Flutter package with a simple implementation of an animated loading button, complete with success and error animations.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+![](screenshots/loading-button.gif)
 
-## Features
+## Installation
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Add this to your pubspec.yaml:
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+    dependencies:
+        handle_button: ^1.0.0
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### Import
 
-```dart
-const like = 'sample';
-```
+    import 'package:handle_button/handle_button.dart';
 
-## Additional information
+### Simple Implementation
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+    final HandleButtonController _btnController = HandleButtonController();
+
+    void _doSomething() async {
+        Timer(Duration(seconds: 3), () {
+            _btnController.success();
+        });
+    }
+
+    HandleButton(
+        child: Text('Tap me!', style: TextStyle(color: Colors.white)),
+        controller: _btnController,
+        onPressed: _doSomething,
+    )
+
+The Rounded Loading Button has many configurable properties, including:
+
+* `duration` - The duration of the button animation
+* `loaderSize` - The size of the CircularProgressIndicator
+* `animateOnTap` -  Whether to trigger the loading animation on the tap event
+* `resetAfterDuration` - Reset the animation after specified duration, defaults to 15 seconds
+* `errorColor` - The color of the button when it is in the error state
+* `successColor` - The color of the button when it is in the success state
+* `successIcon` - The icon for the success state
+* `failedIcon` - The icon for the failed state
+* `loadingWidget` - The widget for the loading state
+
+
+## Contributions
+
+All contributions are welcome!
